@@ -1,0 +1,72 @@
+<!-- Date: 2014-05-22 -->
+<DIV id="navBar" class="page-header">
+    <li>
+        <a href="$!{contextPath}/productUnhandle" class="headlink">仓库商品管理</a>>
+        <a href="$!{contextPath}/productUnhandle/view?id=$!{product.pid}" class="headlink">发布商品</a>
+    </li>
+</DIV>
+<div class="page-content">
+    <div class="alert-content">
+
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        管理
+                        <small>
+                            <i class="icon-double-angle-right"></i>
+                            详细信息
+                        </small>
+                    </h1>
+                </div>
+                <!-- /.page-header -->
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+
+                        <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> id</div>
+
+                                <div class="profile-info-value">
+                                    <span>$!{product.pid}&nbsp;</span>
+                                </div>
+                            </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">  商品名称 </div>
+
+                                <div class="profile-info-value">
+                                    <span>$!{product.pname}&nbsp;</span>
+                                </div>
+                            </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">  商品重量 </div>
+
+                                <div class="profile-info-value">
+                                    <span>$!{product.weight}&nbsp;</span>
+                                </div>
+                            </div>
+
+                            <div class="clearfix form-actions">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <a class="btn btn-info" href="javascript:history.back()">
+                                        <i class="icon-reply bigger-110"></i>
+                                        返回
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PAGE CONTENT ENDS -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div>
+
+<form action="/update"

@@ -1,0 +1,344 @@
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img { margin:0; padding:0; }
+body {background: #fff;}
+.clear:after{content:"."; display:block; font-size:0px; line-height:0px; height:0px; clear:both; visibility:hidden;}
+* {
+	font-family: "微软雅黑";
+	font-size: 13px;
+	/*color: #666;*/
+}
+
+.main{
+    width: 860px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 1px #ccc;
+    background: #f3f3f3;
+}
+
+.title div{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.template {
+    width: 730px;
+    margin-top: -40px;
+    margin-bottom: 20px;
+    margin-left: 110px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 1px #ccc;
+    background: #f3f3f3;
+}
+.template * {
+    box-sizing:inherit;
+}
+a.compile {
+    background: url("../img/templete/btn-1_03.png");
+    width: 135px;
+    height: 30px;
+    float: right;
+    margin: 8px;
+}
+a.back {
+    background: url("../img/templete/btn-2_03.png");
+    width: 135px;
+    height: 30px;
+    float: right;
+    margin: 8px;
+}
+span.icon-img {
+    background: url("../img/templete/img.png");
+    width: 140px;
+    height: 80px;
+    display:block;
+    margin: 90px 123px;
+}
+.header {
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 1px solid #ddd;
+}
+.header p {
+    float: left;
+    margin-left: 8px;
+}
+.content {
+    border-top: 1px solid #fff;
+    overflow: hidden;
+}
+.content ul.images-list {
+    list-style: none;
+    margin: 30px 0 30px 25px;
+    float: left;
+}
+.content ul.images-list li {
+    float: left;
+    margin-right: 20px;
+    cursor: pointer;
+    border: 1px solid #f9f9f9;
+}
+.content ul.images-list li.act, .content ul.images-list li:active, .content ul.images-list li:focus {
+    border: 1px solid #FA4945;
+}
+.content .box {
+    min-height: 600px;
+    background: #fff;
+    border-top: 1px solid #ccc;
+}
+input {
+    width: 285px;
+    padding: 5px;
+    border: 1px dashed #F0D7D7;
+}
+textarea {
+	border: 1px dashed #F0D7D7;
+	width: 285px;
+	height: 120px;
+	resize:none;
+	padding: 5px;
+	color: #999;
+}
+
+.m-1 {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.m-1 .right, .m-1 .left {
+	float: left;
+	margin: 13px;
+	position: relative;
+}
+.m-1 .right {
+    width: 285px;
+    margin: 15px 15px 15px 15px;
+}
+.m-1 .right textarea {
+    margin-top: 15px;
+}
+.img-end {
+    background: #F0F0F0;
+    float: left;
+    width: 385px;
+    height: 260px;
+}
+div.add-mroe {
+    height: 40px;
+    width: 100%;
+    float: left;
+    border: 1px dashed #F0D7D7;
+    background: #F0F0F0;
+    line-height: 40px;
+    text-align: center;
+    margin: 15px 0;
+    color: #005EA7;
+    cursor: pointer;
+}
+
+
+.m-2 {
+	position: relative;
+	float: left;
+}
+.m-2 input {
+    float: left;
+    margin: 15px;
+    width: 685px;
+}
+.m-2 textarea {
+	float: left;
+    margin: 15px;
+    width: 685px;
+}
+.m-2 .img-end {
+	float: left;
+    margin: 15px;
+    width: 700px;
+}
+.m-2 .img-end span {
+	margin: 90px 273px;
+}
+
+
+.m-3 {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+.m-3 .left {
+	float: left;
+	position: relative;
+}
+.m-3 .right {
+	float: right;
+	width: 100%;
+	position: relative;
+}
+.m-3 input {
+	margin: 15px 25px;
+	float: right;
+	width: 660px;
+}
+.m-3 textarea {
+	height: 100px;
+	margin: 0 25px;
+	float: right;
+	width: 660px;
+}
+.m-3 .images {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 500px;
+}
+.m-3 .images .img-end {
+	width: 260px;
+	height: 255px;
+	position: absolute;
+	border: 5px solid #fff;
+}
+.m-3 .images .icon-img {
+	margin: 88px 60px;
+}
+
+.m-4 {
+	float: left;
+	width: 100%;
+	margin: 20px 0;
+	position: relative;
+}
+.m-4 .title {
+	text-align: center;
+	float: left;
+	margin: 10px 215px;
+}
+.m-4 .img-end {
+	width: 260px;
+	height: 255px;
+	border: 5px solid #fff;
+}
+.m-4 .icon-img {
+	margin: 88px 60px;
+}
+.m-4 ul {
+	width: 340px;
+	float: left;
+	margin: 10px 0;
+	list-style: none;
+}
+.m-4 ul li {
+	margin: 0 20px;
+	border: none;
+}
+.m-4 ul li input {
+	margin: 0 35px;
+    width: 250px
+}
+.m-4 ul li .img-end {
+	border: 5px solid #fff;
+    height: 255px;
+    margin: 10px 33px;
+    width: 260px;
+}
+.m-4 ul .left {
+	float: left;
+	width: 340px;
+	text-align: center;
+}
+.m-4 ul .right {
+	float: left;
+	width: 340px;
+	text-align: center;
+}
+.coloe {
+	position: absolute;
+	right: 10px;
+	top:5px;
+	font-size: 20px;
+	background: #ccc;
+	font-weight: bold;
+	padding: 0 5px;
+	cursor: pointer;
+	color: #999;
+	display: none;
+	border-radius: 15px;
+}
+.coloe:hover {
+	background: #999;
+	color: #fff;
+}
+.m-1 .right .m-1-text {
+	bottom: 5px;
+    position: absolute;
+    right: -5px;
+    font-style: italic;
+}
+.m-1 .right .m-1-input {
+	top: 5px;
+    position: absolute;
+    right: -5px;
+    font-style: italic;
+}
+.m-1 .left .m-1-text {
+	bottom: 5px;
+    position: absolute;
+    right: -5px;
+    font-style: italic;
+}
+.m-1 .left .m-1-input {
+	top: 5px;
+    position: absolute;
+    right: -5px;
+    font-style: italic;
+}
+.m-2 .m-1-text {
+	position: absolute;
+	right: 25px;
+	top:180px;
+	font-style: italic;
+}
+.m-2 .m-1-input {
+	position: absolute;
+	right: 25px;
+	top: 20px;
+	font-style: italic;
+}
+.m-3 .right .m-1-text {
+	position: absolute;
+	right: 30px;
+	top:150px;
+	font-style: italic;
+}
+.m-3 .right .m-1-input {
+	position: absolute;
+	right: 30px;
+	top: 20px;
+	font-style: italic;
+}
+.m-3 .m-1-text {
+	position: absolute;
+	bottom: 5px;
+	right: 30px;
+	font-style: italic;
+}
+.m-4 li {
+	position: relative;
+	float: left;
+}
+.m-4 .m-1-input {
+	position: absolute;
+    right: 225px;
+    top: 15px;
+    font-style: italic;
+}
+.m-4 li .m-1-text {
+	position: absolute;
+    right: 45px;
+    top: 40px;
+    font-style: italic;
+}
+.m-4 textarea {
+	 height: 50px;
+    margin-left: 40px;
+    width: 245px;
+}

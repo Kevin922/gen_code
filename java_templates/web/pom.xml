@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>{{ groupId }}</groupId>
+		<artifactId>{{ artifactId }}</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<artifactId>{{ artifactId }}-web</artifactId>
+	<packaging>war</packaging>
+	<name>{{ artifactId }}-web</name>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources/</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
+	<!-- 打包配置信息 -->
+	<profiles>
+		<profile>
+			<!--上线环境-->
+			<id>local</id>
+			<!-- 默认 -->
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+            <build>
+                <finalName>local</finalName>
+                <filters>
+                    <filter>local.properties</filter>
+                </filters>
+            </build>
+		</profile>
+	</profiles>
+
+	<dependencies>
+		<dependency>
+			<groupId>{{ groupId }}</groupId>
+			<artifactId>{{ artifactId }}-domain</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>{{ groupId }}</groupId>
+			<artifactId>{{ artifactId }}-service</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+	</dependencies>
+</project>

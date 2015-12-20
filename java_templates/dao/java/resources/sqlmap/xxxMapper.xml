@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="{{ base_package }}.dao.{{ table_name_uppercase }}Dao">
+
+    <!-- {{ table_name_lowercase }} 所有查询列 -->
+    <sql id="QUERY_COLUMN_LIST">
+        <![CDATA[
+        {% for k,v in domain.items() -%}
+        {{ k }},
+        {% endfor -%}
+        ]]>
+    </sql>
+
+    <!-- {{ table_name_lowercase }} 查询列来源表-->
+    <sql id="QUERY_FROM_TABLE"><![CDATA[FROM {{ table_name_lowercase }}]]></sql>
+
+    <!-- 全部条件(更多功能可以通过queryData扩展实现)  -->
+    <sql id="QUERY_WHERE_CLAUSE">
+        <where>
+            {% for k,v in domain.items() -%}
+                {% if  v[0] == 'String' -%}
+                <if test="{{ k }} != null and {{ k }} != ''"><![CDATA[AND {{ k }} LIKE CONCAT("%", #{ {{ v[2] }} }, "%")]]></if>
+                {% else -%}
+                <if test="{{ k }} != null and {{ k }} != ''"><![CDATA[AND {{ k }} = #{ {{ v[2] }} }]]></if>
+                {% endif -%}
+            {% endfor -%}
+        </where>
+    </sql>
+
+    <!-- 智能排序与分页 -->
+    <sql id="QUERY_ORDER_LIMIT_CONDTION">
+        <if test="orderField != null and orderField != '' and orderFieldType != null and orderFieldType != ''"><![CDATA[ORDER BY ${orderField} ${orderFieldType}]]></if>
+        <if test="startIndex != null and startIndex &gt;= 0 and pageSize != null and pageSize &gt; 0"><![CDATA[LIMIT #{startIndex},#{pageSize}]]></if>
+    </sql>
+
+    <!-- 更新列字段,只要不为NULL则更新,除开主键列 -->
+    <sql id="UPDATE_COLUMN_SET">
+        <set>
+            {% for k,v in domain.items() -%}
+                <if test="{{ k }} != null"><![CDATA[{{ k }} = #{ {{ v[2] }} },]]></if>
+            {% endfor -%}
+        </set>
+    </sql>
+
+    <!-- 插入{{ table_name_lowercase }}记录 -->
+    <insert id="insertEntry" parameterType="{{ table_name_lowercase }}" >
+        <![CDATA[
+            INSERT INTO {{ table_name_lowercase }} ({% for k,v in domain.items() -%} {{ v[2] }}, {% endfor -%} )
+            VALUES ({% for k,v in domain.items() -%} #{ {{ k }} }, {% endfor -%})
+        ]]>
+    </insert>
+
+    <!-- 返回插入的编号,在事务开启状态下有效 -->
+    <select id="lastSequence" resultType="int"><![CDATA[SELECT LAST_INSERT_ID() AS id]]></select>
+
+    <!-- 删除记录,主键IN(array) -->
+    <delete id="deleteByArrayKey" parameterType="java.lang.reflect.Array" >
+        <![CDATA[DELETE FROM {{ table_name_lowercase }} WHERE id IN]]>
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            <![CDATA[#{id}]]>
+        </foreach>
+    </delete>
+
+    <!-- 删除,通过条件 -->
+    <update id="deleteByCondtion" parameterType="{{ table_name_lowercase }}" >
+        <![CDATA[DELETE FROM {{ table_name_lowercase }}]]>
+        <where>
+            <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
+        </where>
+    </update>
+
+    <!-- 修改记录通过主键 -->
+    <update id="updateByKey" parameterType="{{ table_name_lowercase }}" >
+        <![CDATA[UPDATE {{ table_name_lowercase }}]]>
+        <include refid="UPDATE_COLUMN_SET"/>
+        <![CDATA[WHERE id = #{id}]]>
+    </update>
+
+    <!-- 查询,通过主键IN(array) -->
+    <select id="selectEntryArray" parameterType="java.lang.reflect.Array" resultType="{{ table_name_lowercase }}">
+        <![CDATA[SELECT]]>
+        <include refid="QUERY_COLUMN_LIST"/>
+        <include refid="QUERY_FROM_TABLE"/>
+        <![CDATA[WHERE id IN]]>
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            <![CDATA[#{id}]]>
+        </foreach>
+    </select>
+
+    <!-- 查询,通过ID -->
+    <select id="selectEntry" parameterType="{{ table_name_lowercase }}" resultType="{{ table_name_lowercase }}">
+        <![CDATA[SELECT]]>
+        <include refid="QUERY_COLUMN_LIST"/>
+        <include refid="QUERY_FROM_TABLE"/>
+        <where>
+            <if test="id != null and id != ''"><![CDATA[AND id = #{id}]]></if>
+        </where>
+    </select>
+
+
+    <!-- 查询,通过条件 -->
+    <select id="selectEntryList" parameterType="{{ table_name_lowercase }}" resultType="{{ table_name_lowercase }}">
+        <![CDATA[SELECT]]>
+        <include refid="QUERY_COLUMN_LIST"/>
+        <include refid="QUERY_FROM_TABLE"/>
+        <include refid="QUERY_WHERE_CLAUSE"/>
+        <include refid="QUERY_ORDER_LIMIT_CONDTION"/>
+    </select>
+
+    <!-- 总数查询,通过条件 -->
+    <select id="selectEntryListCount" parameterType="{{ table_name_lowercase }}" resultType="int">
+        <![CDATA[SELECT COUNT(id) AS dataCount]]>
+        <include refid="QUERY_FROM_TABLE"/>
+        <include refid="QUERY_WHERE_CLAUSE"/>
+    </select>
+    
+    <!-- 其它SQL语句 -->
+
+</mapper>

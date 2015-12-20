@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd"
+	default-autowire="byName">
+
+	<!-- mvc controller -->
+	<context:component-scan base-package="com.diligrp.titan.web" />
+	<!--<context:component-scan base-package="com.dili.titan.ws" />-->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<context:annotation-config />
+
+	<mvc:resources location="/assets/**" mapping="/assets/**" />
+	<!-- spring mvc related -->
+
+	<!-- JSR-303 support will be detected on classpath and enabled automatically <mvc:annotation-driven conversion-service="conversionService" 
+		/> <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"> <property 
+		name="formatterRegistrars"> <bean class="com.diligrp.common.springmvc.converter.DefaultFormatterRegistrar" /> </property> 
+		</bean> -->
+	<mvc:default-servlet-handler />
+
+	<!-- static resources <mvc:resources location="/static/" mapping="/static/**" cache-period="864000"/> 24 * 3600 * 10 -->
+
+	<!-- template view -->
+	<bean id="velocityConfig" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath" value="/WEB-INF/views/" />
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+				<prop key="contentType">text/html;charset=UTF-8</prop>
+				<prop key="velocimacro.library">common/macro.vm</prop>
+				<prop key="file.resource.loader.cache">false</prop>
+				<prop key="file.resource.loader.modificationCheckInterval">1</prop>
+				<prop key="velocimacro.library.autoreload">true</prop>
+				<prop key="eventhandler.referenceinsertion.class">org.apache.velocity.app.event.implement.EscapeHtmlReference</prop>
+				<prop key="eventhandler.escape.html.match">/^(?!.*\\$screen_content).*$/</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver">
+		<property name="layoutUrl" value="layout/onlyContent.vm" />
+		<property name="cache" value="false" />
+		<property name="suffix" value=".vm" />
+		<property name="exposeSpringMacroHelpers" value="true" />
+		<property name="dateToolAttribute" value="dateTool" />
+		<property name="numberToolAttribute" value="numberTool" />
+		<!-- Merge urlBuilderMap to view context for convenience. You can put your tools which must be thread safe. -->
+		<property name="contentType" value="text/html;charset=UTF-8" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="defaultContentType" value="text/html" />
+		<!-- not by accept header -->
+		<property name="ignoreAcceptHeader" value="true" />
+		<!-- by extension -->
+		<property name="mediaTypes">
+			<map>
+				<entry key="xml" value="application/xml" />
+				<entry key="json" value="application/json" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<ref bean="velocityViewResolver" />
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<!-- for application/json -->
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+			</list>
+		</property>
+	</bean>
+
+    <!-- 文件上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+
+	<!-- locale related -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieName" value="_clientlocale" />
+		<property name="defaultLocale" value="zh_CN" />
+		<property name="cookieMaxAge" value="2147483647" />
+	</bean>
+
+	<!-- Access resource bundles with the specified basename -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames" value="/WEB-INF/i18n/content,/WEB-INF/i18n/validation,/WEB-INF/i18n/asset,/WEB-INF/i18n/enum" />
+		<property name="cacheSeconds" value="5" />
+	</bean>
+
+	<bean id="webUtils" class="com.diligrp.titan.web.utils.WebUtils">
+		<property name="assetsPath" value="http://titan.dili.com/assets" />
+	</bean>
+
+	<bean id="velocityTools" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="webUtils" value-ref="webUtils" />
+				<entry key="domain" value="http://b2b.product.xianmai365.com /" />
+			</map>
+		</constructor-arg>
+	</bean>
+
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/**"/>-->
+            <!--<mvc:exclude-mapping path="/noAccess.do"/>-->
+            <!--<mvc:exclude-mapping path="/loginControl/**"/>-->
+            <!--<mvc:exclude-mapping path="/favicon.ico"/>-->
+            <!--<mvc:exclude-mapping path="/common/**"/>-->
+            <!--<bean class="com.diligrp.manage.sdk.session.SessionInterceptor">-->
+                <!--<property name="enabled" value="true"/>-->
+            <!--</bean>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+</beans>

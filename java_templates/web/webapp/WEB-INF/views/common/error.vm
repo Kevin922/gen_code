@@ -1,0 +1,12 @@
+  <div class="alert alert-error">
+  <h4 class="alert-heading">操作失败</h4>
+  $!{value.result}
+    $!msg
+
+  #if($returnUrl)
+      <a href="$returnUrl">返回重试</a>
+  #end
+</div>
+#if($!{value.data})
+<pre>$!{value.data}</pre>
+#end

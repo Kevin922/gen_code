@@ -1,0 +1,55 @@
+<DIV id="navBar" class="page-header">
+    <li>
+        <a href="$!{contextPath}/productUnhandle" class="headlink">仓库商品管理</a>>
+        <a href="$!{contextPath}/productUnhandle/view?id=$!{product.pid}" class="headlink">发布商品</a>
+    </li>
+</DIV>
+
+#if($!{error})
+<div class="alert alert-block alert-danger">
+    <p style="text-align: center;">$!{error}</p>
+</div>
+#end
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+
+        <form id="userAdd" class="form-horizontal" role="form" method="post" action="/productForSale/saveOrUpdate" novalidate="novalidate">
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> ID: </label>
+
+                <div class="col-xs-12 col-sm-4">
+                    <input type="text" required="true" id="form-field-1" placeholder="ID" autocomplete="off" name="pid" value="$!{productForm.pid}" class="width-100">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品名称: </label>
+
+                <div class="col-xs-12 col-sm-4">
+                    <input required="true" type="text" id="form-field-2" placeholder="商品名称" autocomplete="off" name="pname" value="$!{productForm.pname}"  class="width-100">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-2"> 商品重量: </label>
+
+                <div class="col-xs-12 col-sm-4">
+                    <input required="true" type="text" id="form-field-7" placeholder="商品重量" autocomplete="off" name="weight" value="$!{productForm.weight}"  class="width-100">
+                </div>
+            </div>
+
+
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-3 col-md-9">
+                    <button class="btn btn-info" type="submit">
+                        <i class="icon-ok bigger-110"></i> 提交
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp; <a class="btn btn-info" href="javascript:history.back()"> <i class="icon-undo bigger-110"></i> 返回 </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

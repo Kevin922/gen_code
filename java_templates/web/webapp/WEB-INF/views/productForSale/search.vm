@@ -1,0 +1,83 @@
+<form class="well form-search" id="productQuery" action="$!{queryPath}" method="POST">
+##    分类插件使用
+    <input type="hidden" id="categoryIds" value=""/>
+
+    <div id="advanceSearch">
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">ID: </label>
+                <div class="col-xs-9">
+                    <input type="text" id="id" value="$!{query.id}" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">商品名称: </label>
+                <div class="col-xs-9">
+                    <input type="text" id="pname" value="$!{query.pname}" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-4">
+            <div class="form-group">
+                <label class="col-xs-3 control-label text-right">商品重量: </label>
+                <div class="col-xs-9">
+                    <input type="text" id="weight" value="$!{query.weight}" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix">
+            <span class="pull-right">
+                <button class="btn btn-sm btn-primary" onclick="query()"><i class="icon-search icon-white"></i>搜索</button>
+##                <input type="button" value="重置条件" onclick="cleanForm('form');">
+            </span>
+        </div>
+
+        <!-- 智能分页与排序 -->
+        <input type="hidden" name="currentPage" value="$!{page.currentPage}"/>
+        <input type="hidden" name="pageSize" value="$!{page.pageSize}"/>
+        <input type="hidden" name="orderField" value="$!{page.orderField}"/>
+        <input type="hidden" name="orderFieldType" value="$!{page.orderFieldType}"/>
+
+        <input type="hidden" name="id" value="$!{query.id}"/>
+        <input type="hidden" name="pname" value="$!{query.pname}"/>
+        <input type="hidden" name="weight" value="$!{query.weight}"/>
+
+    </div>
+</form>
+
+<script>
+// 4. 提交
+function query(pid){
+    // 验证
+    if(!checkDataAndSet()){
+        return;
+    }
+    var $form = $("#productQuery");
+##    $form.attr("action", "$!{queryPath}");
+    $form.submit();
+
+};
+
+// 提交
+function checkDataAndSet(){
+    // 1. 商品分类
+    $("input[name='id']").val($("#id").val());
+
+    // 2. 上传人员
+    $("input[name='pname']").val($("#pname").val());
+
+    // 3. 品牌分类
+    $("input[name='weight']").val($("#weight").val());
+
+    // 6. 搜索时，清空分页信息
+    $("input[name='currentPage']").val(1);
+
+    return true;
+}
+
+</script>

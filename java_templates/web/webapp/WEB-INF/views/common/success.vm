@@ -1,0 +1,8 @@
+<div class="alert alert-error">
+  <h4 class="alert-heading">操作成功</h4>
+  $!{value.result}
+    $!msg
+</div>
+#if($!{value.data})
+<pre>$!{value.data}</pre>
+#end

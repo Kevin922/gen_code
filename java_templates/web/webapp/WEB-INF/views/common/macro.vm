@@ -1,0 +1,69 @@
+#*自定义宏*#
+
+##分页
+#macro(showPage $page)
+#if($page != "")
+<div>
+<ul class="pagination pull-right" style="margin:0px;">
+
+	<li class="prev #if($page.isFirstPage())disabled#end">
+		#set ( $tmpCurr = $page.currentPage - 1 )
+		<a href="#if($page.isFirstPage())javascript:void(0)#else javascript:XUI.Page(${tmpCurr})#end">
+			<i class="icon-double-angle-left"></i>
+		</a>
+	</li>
+    #if(${page.currentPage}>4)
+    <li><a href="javascript:XUI.Page(1)">首页</a></li>
+    #end
+	#foreach($index in $!{webUtils.pageSplit($page.currentPage,$page.pageCount,6)})
+		#set( $i = $index )
+		<li #if($index == $page.currentPage)class="active" #end><a href="javascript:XUI.Page(${i})">$index</a></li>
+	#end
+    #if(${page.currentPage}+2<${page.pageCount})
+    <li><a href="javascript:XUI.Page(${page.pageCount})">末页</a></li>
+    #end
+	<li class="next #if($page.isLastPage())disabled#end">
+		#set ( $tmpCurr = $page.currentPage + 1 )
+		<a href="#if($page.isLastPage())javascript:void(0)#else javascript:XUI.Page(${tmpCurr})#end">
+			<i class="icon-double-angle-right"></i>
+		</a>
+	</li>
+
+</ul>
+</div>
+<div style="float:right;">
+    <span>
+    	查询出<strong>$!{page.totalCount}</strong>条数据，共<strong>${page.pageCount}</strong>页，转到&nbsp;<input type="text" id="changePage" max="${page.pageCount}" curr="${page.currentPage}"size="3"/>&nbsp;页&nbsp;<a href="javascript:XUI.ChangePage()" class="btn-sm btn-primary">确定</a>&nbsp;
+    </span>
+</div>
+#end
+#end
+
+
+##排序
+#macro(sorting $obj $field)
+#if($obj && $obj.orderField == $field)
+ class="sorting_$obj.orderFieldType" data-orderFieldType="$obj.orderFieldNextType" 
+#else
+ class="sorting" data-orderFieldType="DESC" 
+#end
+ data-orderField="$field" 
+#end
+
+#macro(showStatusName $status)
+    #if($status == 3)
+    在售
+    #elseif($status == 4)
+    仓库中
+    #elseif($status == 5)
+    已下架
+    #elseif($status == 6)
+    过期下架
+    #elseif($status == 7)
+    手动下架
+    #end
+#end
+
+#macro(vn)
+2014101126
+#end

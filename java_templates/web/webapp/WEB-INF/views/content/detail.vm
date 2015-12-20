@@ -1,0 +1,4 @@
+hello ${user.name} ${user.age}
+#set($crumbs="/web/abc")
+$!{webUtils.getAssetsPath($crumbs)}
+$!homeModule.getTarget('/')
