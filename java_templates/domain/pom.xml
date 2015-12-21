@@ -11,7 +11,7 @@
 
     <groupId>{{ artifactId }}-domain</groupId>
     <artifactId>{{ artifactId }}-domain</artifactId>
-java
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!--<dependencies>-->
