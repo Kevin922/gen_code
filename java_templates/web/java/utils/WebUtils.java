@@ -1,4 +1,4 @@
-package com.diligrp.transmit.utils;
+package {{ base_package }}.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

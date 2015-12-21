@@ -1,16 +1,8 @@
-package com.diligrp.titan.domain.base;
+package {{ base_package }}.domain.base;
 
 import java.util.Hashtable;
 import java.util.Map;
 
-/**
- * <B>Description</B>  <br />
- * <B>Copyright</B> Copyright (c) 2014 www.diligrp.com All rights reserved. <br />
- * 本软件源代码版权归地利集团,未经许可不得任意复制与传播.<br />
- * <B>Company</B> 地利集团
- * @createTime May 12, 2014 12:29:10 PM
- * @author gongsz
- */
 public class Result {
     private static final int INIT_MAP_SIZE = 5;
     /**

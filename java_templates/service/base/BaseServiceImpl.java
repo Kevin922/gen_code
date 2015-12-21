@@ -1,8 +1,4 @@
-/*
- * Copyright (c) 2014 www.diligrp.com All rights reserved.
- * 本软件源代码版权归----所有,未经许可不得任意复制与传播.
- */
-package com.diligrp.titan.service.base;
+package {{ base_package }}.service.base;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,9 +6,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.diligrp.titan.dao.base.BaseDao;
-import com.diligrp.titan.domain.common.Page;
-import com.diligrp.titan.domain.common.TitanSequence;
+import {{ base_package }}.dao.base.BaseDao;
+import {{ base_package }}.domain.common.Page;
+
 
 /**
  * service实现类

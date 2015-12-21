@@ -1,18 +1,9 @@
-/*
- * Copyright (c) 2014 www.diligrp.com All rights reserved.
- * 本软件源代码版权归----所有,未经许可不得任意复制与传播.
- */
-package com.diligrp.titan.domain.base;
+package {{ base_package }}.domain.base;
 
 import java.util.Date;
 import com.alibaba.fastjson.annotation.JSONField;
 
-/**
- * 领域模型基类(常规公共字段)<br/>
- * 一律使用引用类型
- * @author dev-center
- * @since 2014-05-10
- */
+
 public class BaseDomain extends BaseQuery {
 	private static final long serialVersionUID = 1L;
 	private Long id;// 编号

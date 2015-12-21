@@ -1,8 +1,4 @@
-/*
- * Copyright (c) 2014 www.diligrp.com All rights reserved.
- * 本软件源代码版权归----所有,未经许可不得任意复制与传播.
- */
-package com.diligrp.titan.service.base;
+package {{ base_package }}.service.base;
 
 import com.diligrp.titan.domain.common.Page;
 import com.diligrp.titan.domain.common.TitanSequence;

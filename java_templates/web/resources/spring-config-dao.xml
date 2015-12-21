@@ -7,7 +7,7 @@
      		http://www.springframework.org/schema/context/spring-context.xsd"
 	default-autowire="byName">
 
-	<context:component-scan base-package="com.diligrp.titan.dao" />
+	<context:component-scan base-package="{{ base_package }}.dao" />
 
 	<!-- BoneCP configuration -->
 	<bean id="abstractDataSource" abstract="true" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">

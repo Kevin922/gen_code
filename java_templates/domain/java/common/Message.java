@@ -1,15 +1,9 @@
-/*
- * Copyright (c) 2014 www.diligrp.com All rights reserved.
- * 本软件源代码版权归----所有,未经许可不得任意复制与传播.
- */
-package com.diligrp.titan.domain.common;
+package {{ base_package }}.domain.common;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
-/**
- * 页面消息
- * @author dev-center
- * @since 2014-05-10
- */
+
+
 public class Message {
     private String code;// 编码
     private String result;// 结果

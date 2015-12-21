@@ -53,13 +53,45 @@ class Framework(object):
       print('OK - ' + datas['table_name_uppercase']+'Controller.java')
 
       print('BUILDING - web base classs')
-      cls.copy('java_templates/web/java/common', web_java_path+'common')
-      cls.copy('java_templates/web/java/utils', web_java_path+'utils')
+      cls.render(datas=datas, template_file='CustomDateEditor.java',
+            template_path='java_templates/web/java/common',
+            output_path=web_java_path+'common/',
+            output_file='CustomDateEditor.java')
+
+      cls.render(datas=datas, template_file='BeanUtils.java',
+            template_path='java_templates/web/java/utils',
+            output_path=web_java_path+'utils/',
+            output_file='BeanUtils.java')
+
+      cls.render(datas=datas, template_file='WebUtils.java',
+            template_path='java_templates/web/java/utils',
+            output_path=web_java_path+'utils/',
+            output_file='WebUtils.java')
+
+      # cls.copy('java_templates/web/java/common', web_java_path+'common')
+      # cls.copy('java_templates/web/java/utils', web_java_path+'utils')
       print('OK - web base classs')
 
       
       print('BUILDING - web resources')
-      cls.copy('java_templates/web/resources', web_res_path+'resources')
+      cls.copy('java_templates/web/resources/conf', web_res_path+'resources/conf')
+      shutil.copy('java_templates/web/resources/log4j.xml', web_res_path+'resources/log4j.xml')
+      cls.render(datas=datas, template_file='spring-config-dao.xml',
+            template_path='java_templates/web/resources',
+            output_path=web_res_path+'resources/',
+            output_file='spring-config-dao.xml')
+      cls.render(datas=datas, template_file='spring-config-servlet.xml',
+            template_path='java_templates/web/resources',
+            output_path=web_res_path+'resources/',
+            output_file='spring-config-servlet.xml')
+      cls.render(datas=datas, template_file='spring-config-service.xml',
+            template_path='java_templates/web/resources',
+            output_path=web_res_path+'resources/',
+            output_file='spring-config-service.xml')
+      cls.render(datas=datas, template_file='spring-config.xml',
+            template_path='java_templates/web/resources',
+            output_path=web_res_path+'resources/',
+            output_file='spring-config.xml')
       print('OK - web resources')
 
       print('BUILDING - web webapp')
@@ -103,7 +135,16 @@ class Framework(object):
 
       # base
       print('BUILDING - service base class')
-      cls.copy('java_templates/service/base', service_path+'base')
+      cls.render(datas=datas, template_file='BaseService.java',
+            template_path='java_templates/service/base/',
+            output_path=service_path+'base/',
+            output_file='BaseService.java')
+      cls.render(datas=datas, template_file='BaseServiceImpl.java',
+            template_path='java_templates/service/base/',
+            output_path=service_path+'base/',
+            output_file='BaseServiceImpl.java')
+
+      # cls.copy('java_templates/service/base', service_path+'base')
       print('OK - service base class')
 
       # pom
@@ -141,7 +182,24 @@ class Framework(object):
 
       # base
       print('BUILDING - dao base class')
-      cls.copy(dao_template_path+'base', dao_path+'base')
+      cls.render(datas=datas, template_file='AppException.java',
+            template_path=dao_template_path+'base',
+            output_path=dao_path+'base/',
+            output_file='AppException.java')
+      cls.render(datas=datas, template_file='BaseDao.java',
+            template_path=dao_template_path+'base',
+            output_path=dao_path+'base/',
+            output_file='BaseDao.java')
+      cls.render(datas=datas, template_file='BaseDaoImpl.java',
+            template_path=dao_template_path+'base',
+            output_path=dao_path+'base/',
+            output_file='BaseDaoImpl.java')
+      cls.render(datas=datas, template_file='MyBatisSupport.java',
+            template_path=dao_template_path+'base',
+            output_path=dao_path+'base/',
+            output_file='MyBatisSupport.java')
+
+      # cls.copy(dao_template_path+'base', dao_path+'base')
       print('OK - doa base class')
 
       # resource
@@ -184,15 +242,15 @@ class Framework(object):
       print('OK -'  + datas['table_name_uppercase']+'.java')
 
       print('BUILDING - request create domain - handle post request')
-      cls.render(datas=datas, template_file='xxx.java',
-            template_path=template_path+'java',
+      cls.render(datas=datas, template_file='xxxForm.java',
+            template_path=template_path+'java/requestForm',
             output_path=domain_path+'requestForm/',  
             output_file=datas['table_name_uppercase']+'Form.java')
       print('OK - ' + datas['table_name_uppercase']+'Form.java')
 
       print('BUILDING - request query domain - handle get request')
-      cls.render(datas=datas, template_file='xxx.java',
-            template_path=template_path+'java',
+      cls.render(datas=datas, template_file='xxxQueryForm.java',
+            template_path=template_path+'java/requestForm',
             output_path=domain_path+'requestForm/',  
             output_file=datas['table_name_uppercase']+'QueryForm.java')
       print('OK - ' + datas['table_name_uppercase']+'QueryForm.java')

@@ -2,7 +2,7 @@
  * Copyright (c) 2014 www.diligrp.com All rights reserved.
  * 本软件源代码版权归----所有,未经许可不得任意复制与传播.
  */
-package com.diligrp.titan.web.common;
+package {{ base_package }}.web.common;
 
 import org.springframework.util.StringUtils;
 import java.beans.PropertyEditorSupport;
@@ -11,11 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-/**
- * 日期绑定
- * @author dev-center
- * @since 2014-05-10
- */
+
+
 public class CustomDateEditor extends PropertyEditorSupport {
     private final boolean allowEmpty;
     private DateFormat dateFormat;

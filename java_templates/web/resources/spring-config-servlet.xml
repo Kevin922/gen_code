@@ -11,8 +11,8 @@
 	default-autowire="byName">
 
 	<!-- mvc controller -->
-	<context:component-scan base-package="com.diligrp.titan.web" />
-	<!--<context:component-scan base-package="com.dili.titan.ws" />-->
+	<context:component-scan base-package="{{ base_package }}.web" />
+
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	<context:annotation-config />
 
@@ -98,7 +98,7 @@
 		<property name="cacheSeconds" value="5" />
 	</bean>
 
-	<bean id="webUtils" class="com.diligrp.titan.web.utils.WebUtils">
+	<bean id="webUtils" class="{{ base_package }}.web.utils.WebUtils">
 		<property name="assetsPath" value="http://titan.dili.com/assets" />
 	</bean>
 

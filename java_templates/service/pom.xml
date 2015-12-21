@@ -8,9 +8,9 @@
 		<version>1.0</version>
 	</parent>
 
-	<artifactId>{ artifactId }}-service</artifactId>
+	<artifactId>{{ artifactId }}-service</artifactId>
 	<packaging>jar</packaging>
-	<name>{ artifactId }}-service</name>
+	<name>{{ artifactId }}-service</name>
 
 	<dependencies>
 		<dependency>

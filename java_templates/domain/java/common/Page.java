@@ -1,15 +1,6 @@
-/*
- * Copyright (c) 2014 www.diligrp.com All rights reserved.
- * 本软件源代码版权归----所有,未经许可不得任意复制与传播.
- */
 package com.diligrp.titan.domain.common;
 import java.util.List;
-/**
- * 分页对象
- * @author dev-center
- * @since 2014-05-10
- * @param <T> 实体
- */
+
 public class Page<T> {
     //初始化size
     private final static int INIT_SIZE = 20;

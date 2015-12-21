@@ -8,8 +8,7 @@
         <artifactId>{{ artifactId }}</artifactId>
         <version>1.0</version>
     </parent>
-
-    <groupId>{{ artifactId }}-domain</groupId>
+    
     <artifactId>{{ artifactId }}-domain</artifactId>
     <version>0.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>

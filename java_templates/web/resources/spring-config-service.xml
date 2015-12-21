@@ -11,7 +11,7 @@
 			http://www.springframework.org/schema/tx/spring-tx.xsd"
        default-autowire="byName">
 	
-	<context:component-scan base-package="com.diligrp.titan.service"/>
+	<context:component-scan base-package="{{ base_package }}.service"/>
 
 	<!-- 启用对事务的注解支持 -->
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
