@@ -8,5 +8,5 @@ import  {{ base_package }}.service.base.BaseService;
 /**
  * Created by root on 10/2/15.
  */
-public interface {{ table_name_uppercase }}ForSaleService extends BaseService<{{ table_name_uppercase }},Long> {
+public interface {{ table_name_uppercase }}Service extends BaseService<{{ table_name_uppercase }},Long> {
 }

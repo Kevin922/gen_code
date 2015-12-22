@@ -1,4 +1,4 @@
-package {{ base_package }}.domain;
+package {{ base_package }}.domain.requestForm;
 
 import {{ base_package }}.domain.base.BaseDomain;
 

@@ -1,7 +1,6 @@
 package {{ base_package }}.service.base;
 
 import com.diligrp.titan.domain.common.Page;
-import com.diligrp.titan.domain.common.TitanSequence;
 
 import java.io.Serializable;
 import java.util.List;

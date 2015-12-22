@@ -256,8 +256,31 @@ class Framework(object):
       print('OK - ' + datas['table_name_uppercase']+'QueryForm.java')
 
       print('BUILDING - base domain classes')
-      cls.copy('java_templates/domain/java/base', domain_path+'base')
-      cls.copy('java_templates/domain/java/common', domain_path+'common')
+      cls.render(datas=datas, template_file='BaseDomain.java',
+            template_path=template_path+'java/base',
+            output_path=domain_path+'base/',  
+            output_file='BaseDomain.java')
+      cls.render(datas=datas, template_file='BaseQuery.java',
+            template_path=template_path+'java/base',
+            output_path=domain_path+'base/',  
+            output_file='BaseQuery.java')
+      cls.render(datas=datas, template_file='Result.java',
+            template_path=template_path+'java/base',
+            output_path=domain_path+'base/',  
+            output_file='Result.java')
+
+      cls.render(datas=datas, template_file='Message.java',
+            template_path=template_path+'java/common',
+            output_path=domain_path+'common/',  
+            output_file='Message.java')
+      cls.render(datas=datas, template_file='Page.java',
+            template_path=template_path+'java/common',
+            output_path=domain_path+'common/',  
+            output_file='Page.java')
+
+
+      # cls.copy('java_templates/domain/java/base', domain_path+'base')
+      # cls.copy('java_templates/domain/java/common', domain_path+'common')
       print('OK - base domain classes')
 
       # pom
