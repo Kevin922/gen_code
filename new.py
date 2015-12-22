@@ -47,9 +47,13 @@ class Framework(object):
       print('web:' + web_java_path)
       print('BUILDING - web Controller')
       cls.render(datas=datas, template_file='xxxController.java',
-            template_path='java_templates/web/java/',
+            template_path='java_templates/web/java/controller',
             output_path=web_java_path+'controller/',
             output_file=datas['table_name_uppercase']+'Controller.java')
+      cls.render(datas=datas, template_file='BaseController.java',
+            template_path='java_templates/web/java/controller',
+            output_path=web_java_path+'controller/',
+            output_file='BaseController.java')
       print('OK - ' + datas['table_name_uppercase']+'Controller.java')
 
       print('BUILDING - web base classs')
@@ -206,14 +210,14 @@ class Framework(object):
       print('BUILDING - dao resource - sqlmap')
       cls.render(datas=datas, template_file='xxxMapper.xml',
             template_path=dao_template_path+'resources/sqlmap',
-            output_path=dao_path+'resources/sqlmap/',
+            output_path=dao_base_path+'src/main/resources/sqlmap/',
             output_file=datas['table_name_uppercase']+'.xml')
       print('OK - ' + datas['table_name_uppercase']+'.xml')
 
       print('BUILDING - dao resource - sqlconfig')
       cls.render(datas=datas, template_file='sqlmap-config.xml',
             template_path=dao_template_path+'resources',
-            output_path=dao_path+'resources/',
+            output_path=dao_base_path+'src/main/resources/',
             output_file='sqlmap-config.xml')
       print('OK - sqlmap-config.xml')
 
@@ -315,7 +319,7 @@ if __name__ == '__main__':
     data['base_package'] = "com.diligrp.titan"
     data['table_name_lowercase'] = "product"
     data['table_name_uppercase'] = data['table_name_lowercase'].capitalize()
-    data['domain'] = {'pid': ('Long', u'ID', 'pid'),
+    data['domain'] = {'id': ('Long', u'ID', 'id'),
                         'pname': ('String', u'商品名称', 'pname'),
                         'weight': ('Long', u'商品重量', 'weight')}
 

@@ -2,7 +2,7 @@
     <li>库存商品列表</li>
 </DIV>
 
-#parse("productForSale/search.vm")
+#parse("product/search.vm")
 
 <!-- 表格数据 -->
 <table class="table table-striped table-bordered table-condensed grid">

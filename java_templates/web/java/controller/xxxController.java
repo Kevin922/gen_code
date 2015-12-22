@@ -43,7 +43,7 @@ public class {{ table_name_uppercase }}Controller extends BaseController {
 
     /**
      * 列表展示
-     * @param {{ table_name_lowercase }} 实体对象
+     * @param {{ table_name_lowercase }}QueryForm 实体对象
      * @param page 分页对象
      */
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST})

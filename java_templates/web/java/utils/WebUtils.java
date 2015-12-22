@@ -1,4 +1,4 @@
-package {{ base_package }}.utils;
+package {{ base_package }}.web.utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

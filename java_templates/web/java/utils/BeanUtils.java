@@ -1,9 +1,9 @@
-package {{ base_package }}.utils;
+package {{ base_package }}.web.utils;
 
 
 import java.lang.reflect.Method;
 
-public class BeanUtil {
+public class BeanUtils {
     /**
      * 合并对象
      * 合并两个相同类型的对象, 如果update属性为空则不进行合并, 否则直接将update中的属性赋值给obj
