@@ -281,10 +281,6 @@ class Framework(object):
             template_path=template_path+'java/common',
             output_path=domain_path+'common/',  
             output_file='Page.java')
-
-
-      # cls.copy('java_templates/domain/java/base', domain_path+'base')
-      # cls.copy('java_templates/domain/java/common', domain_path+'common')
       print('OK - base domain classes')
 
       # pom
