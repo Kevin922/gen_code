@@ -1,0 +1,41 @@
+<DIV id="navBar" class="page-header">
+    <li>
+        <a href="$!{contextPath}/productUnhandle" class="headlink">仓库商品管理</a>>
+        <a href="$!{contextPath}/productUnhandle/view?id=$!{product.pid}" class="headlink">发布商品</a>
+    </li>
+</DIV>
+
+#if($!{error})
+<div class="alert alert-block alert-danger">
+    <p style="text-align: center;">$!{error}</p>
+</div>
+#end
+
+<div class="row">
+    <div class="col-xs-12">
+        <!-- PAGE CONTENT BEGINS -->
+
+        <form id="userAdd" class="form-horizontal" role="form" method="post" action="/{{ table_name_lowercase }}/saveOrUpdate" novalidate="novalidate">
+
+            {% for k,v in domain.items() -%}
+            <div class="form-group">
+                <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> {{ v[1] }}: </label>
+
+                <div class="col-xs-12 col-sm-4">
+                    <input type="text" required="true" id="form-field-1" placeholder="{{ v[1] }}" autocomplete="off" name="pid" value="$!{ {{ table_name_uppercase }}Form.{{ v[2] }} }" class="width-100">
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-3 col-md-9">
+                    <button class="btn btn-info" type="submit">
+                        <i class="icon-ok bigger-110"></i> 提交
+                    </button>
+                    &nbsp; &nbsp; &nbsp;
+                    <a class="btn btn-info" href="javascript:history.back()"> <i class="icon-undo bigger-110"></i> 返回 </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

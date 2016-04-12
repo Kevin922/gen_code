@@ -2,7 +2,7 @@
 <DIV id="navBar" class="page-header">
     <li>
         <a href="$!{contextPath}/productUnhandle" class="headlink">仓库商品管理</a>>
-        <a href="$!{contextPath}/productUnhandle/view?id=$!{product.pid}" class="headlink">发布商品</a>
+        <a href="$!{contextPath}/productUnhandle/view?id=$!{product.id}" class="headlink">发布商品</a>
     </li>
 </DIV>
 <div class="page-content">
@@ -35,7 +35,7 @@
                                 <div class="profile-info-name"> id</div>
 
                                 <div class="profile-info-value">
-                                    <span>$!{product.pid}&nbsp;</span>
+                                    <span>$!{product.id}&nbsp;</span>
                                 </div>
                             </div>
                             <div class="profile-info-row">

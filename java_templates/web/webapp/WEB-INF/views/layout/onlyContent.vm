@@ -9,19 +9,11 @@
 
 
 <body class="no-skin">
-<div class="main-container" id="main-container">
-    <script type="text/javascript">
-        try {
-            ace.settings.check('main-container', 'fixed')
-        } catch (e) {
-        }
-    </script>
-   <div class="">
+
 	<div class="page-content">
 		$screen_content
     </div>
-   </div>
-</div>
+
 </body>
 #parse("layout/js.vm")
 </html>

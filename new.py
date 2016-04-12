@@ -100,6 +100,23 @@ class Framework(object):
 
       print('BUILDING - web webapp')
       cls.copy('java_templates/web/webapp', web_res_path+'webapp')
+      # CURD
+      cls.render(datas=datas, template_file='edit.vm',
+            template_path='java_templates/web/webapp/WEB-INF/views/baseDoes',
+            output_path=web_base_path+'webapp/WEB-INF/views/' + datas["table_name_lowercase"] + '/',
+            output_file='edit.vm')
+      cls.render(datas=datas, template_file='list.vm',
+            template_path='java_templates/web/webapp/WEB-INF/views/baseDoes',
+            output_path=web_base_path+'webapp/WEB-INF/views/' + datas["table_name_lowercase"] + '/',
+            output_file='list.vm')
+      cls.render(datas=datas, template_file='search.vm',
+            template_path='java_templates/web/webapp/WEB-INF/views/baseDoes',
+            output_path=web_base_path+'webapp/WEB-INF/views/' + datas["table_name_lowercase"] + '/',
+            output_file='search.vm')
+      cls.render(datas=datas, template_file='view.vm',
+            template_path='java_templates/web/webapp/WEB-INF/views/baseDoes',
+            output_path=web_base_path+'webapp/WEB-INF/views/' + datas["table_name_lowercase"] + '/',
+            output_file='view.vm')
       print('OK - web webapp')
 
       print('BUILDING - web properties')
