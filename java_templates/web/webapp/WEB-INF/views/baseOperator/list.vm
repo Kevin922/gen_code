@@ -9,7 +9,7 @@
 	<thead>
 		<tr>
 		    {% for k,v in domain.items() -%}
-		        <th class='center' width="2%"> {{ v[1] }} </th>
+		        <th class='center' width="2%">{{ v[1] }}</th>
 		    {% endfor %}
 			<th class='center' width="4%">操作</th>
 		</tr>
@@ -18,7 +18,7 @@
     #foreach(${item} in ${page.result})
 		<tr id="item${item.id}">
 		    {% for k,v in domain.items() -%}
-		        <td>$!{item.{{ v[2] }} }</td>
+		        <td>$!{item.{{ v[2] -}} }</td>
 		    {% endfor %}
             <td class="textC">
 				<div class="btn-group">

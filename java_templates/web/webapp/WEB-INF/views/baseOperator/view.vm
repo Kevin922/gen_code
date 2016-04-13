@@ -28,9 +28,8 @@
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS -->
-
                         <div class="profile-user-info profile-user-info-striped">
+                            {% for k,v in domain.items() -%}
                             <div class="profile-info-row">
                                 <div class="profile-info-name"> id</div>
 
@@ -38,20 +37,7 @@
                                     <span>$!{product.id}&nbsp;</span>
                                 </div>
                             </div>
-                            <div class="profile-info-row">
-                                <div class="profile-info-name">  商品名称 </div>
-
-                                <div class="profile-info-value">
-                                    <span>$!{product.pname}&nbsp;</span>
-                                </div>
-                            </div>
-                            <div class="profile-info-row">
-                                <div class="profile-info-name">  商品重量 </div>
-
-                                <div class="profile-info-value">
-                                    <span>$!{product.weight}&nbsp;</span>
-                                </div>
-                            </div>
+                            {% endfor %}
 
                             <div class="clearfix form-actions">
                                 <div class="col-md-offset-3 col-md-9">
@@ -61,6 +47,7 @@
                                     </a>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
